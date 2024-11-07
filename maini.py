@@ -11,6 +11,8 @@ numbers = list(map(int, input().split()))
 print(has_duplicates(numbers))
 
 # assert has_duplicates([0]) True
+# assert has_duplicates([0]) True
+# assert has_duplicates([1]) False Для примера, с задачей не связано
 
 def find(sorted_list, target):
 
