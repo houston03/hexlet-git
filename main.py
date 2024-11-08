@@ -1,3 +1,5 @@
+#просто примеры
+
 # Задачи на типы данных
 def get_odd_numbers(numbers): # Создаем функцию get_odd_numbers, которая принимает кортеж numbers в качестве аргумента.
     odd_numbers = [number for number in numbers if number % 2 != 0] # Генератор списка проверяет каждое число в numbers и добавляет в список odd_numbers только нечетные числа.
