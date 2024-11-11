@@ -1,4 +1,6 @@
-# Задачи на типы данных
+#просто примеры
+
+# Задачи на тип\=-o\=o      ы данных
 def get_odd_numbers(numbers): # Создаем функцию get_odd_numbers, которая принимает кортеж numbers в качестве аргумента.
     odd_numbers = [number for number in numbers if number % 2 != 0] # Генератор списка проверяет каждое число в numbers и добавляет в список odd_numbers только нечетные числа.
     return tuple(odd_numbers) # Преобразуем список odd_numbers в кортеж и возвращаем его.
@@ -172,11 +174,25 @@ for i in list1:
 
 print(rev)
 
-n=int(input())
-m=int(input())
-x=input()
-matri=([]*m for _ in range(n))
-for i in range(n):
-    matri[i][i] = 1
-    matri[i][n-i-1] = 2
-print(matri)
+
+#Decorator
+
+def dec(func):
+
+    def qua(*args, **kwargs):
+        print('start')
+        func(*args, **kwargs)
+        print('end')
+    return qua
+
+# или так
+def say(name, lastname, age):
+    print('hi', name, lastname, age)
+say = dec(say)
+say('Vas', 'bye', 30)
+
+# или так
+@dec
+def say(name, lastname, age):
+    print('hi', name, lastname, age)
+say('Vas', 'bye', 30)
