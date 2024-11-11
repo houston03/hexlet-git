@@ -180,13 +180,15 @@ print(rev)
 
 
 #Decorator
-
+# from functools import wraps +
 def dec(func):
-
+#   @wrape(func) или так +
     def qua(*args, **kwargs):
         print('start')
         func(*args, **kwargs)
         print('end')
+    qua.__name__ = func.__name__ # или так -
+    qua.__doc__ = func.__doc__ # -
     return qua
 
 # или так
@@ -197,6 +199,48 @@ say('Vas', 'bye', 30)
 
 # или так
 @dec
-def say(name, lastname, age):
-    print('hi', name, lastname, age)
-say('Vas', 'bye', 30)
+def say(age):
+    print(age**2)
+say(30)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def decor(func):
+
+    def zam(*args, **kwargs):
+
+        print('test')
+        func(*args, **kwargs)
+    return zam
+
+@decor
+def qua(s, a, y):
+    print('hello', s, a, y)
+qua(5, 6, '= ...')
