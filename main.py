@@ -206,30 +206,10 @@ say(30)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def print_given(*args, **kwargs):
+    print(type(args), args)
+    print(type(kwargs), kwargs)
+print_given(1, 2, 3, [1, 2, 3], 'one', 'two', 'three', two = 2, one = 1, three = 3)
 
 
 def decor(func):
@@ -244,3 +224,203 @@ def decor(func):
 def qua(s, a, y):
     print('hello', s, a, y)
 qua(5, 6, '= ...')
+
+
+# ООП
+
+class Dog:
+    def __init__(self, name, breed):
+        self.name = name
+        self.breed = breed
+def bark(self):
+    print(f"{self.name} лает!")
+
+my_dog = Dog("Рекс", "Овчарка")
+print(my_dog.__dict__)
+
+
+class Point:
+    color = 'red'
+    circle = 2
+
+    def __init__(self, color, circle):
+        print('__init__')
+        self.color = color
+        self.circle = circle
+
+    def __del__(self):
+        print('delete' + str(self))
+
+    def new(self, color, circle):
+        self.color = color
+        self.circle = circle
+
+    def new_2(self):
+        return (self.color, self.circle)
+
+pt = Point('yellow', 4)
+pt.new('red', 3)
+print(pt.__init__)
+
+
+
+class Person:
+
+    def __init__(self, name):
+        self.name = name
+
+    @staticmethod
+    def status(year_of_birth):
+        if 2021 - year_of_birth >= 18:
+            print('Вы можете смотреть все страницы сайта')
+        else:
+            print('Часть страниц вам не доступна')
+
+
+student = Person('Петр')
+# Тесты
+student.status(2002)
+Person.status(2011)
+
+
+
+
+
+
+
+class Soda:
+    def __init__(self, ingredient=None):
+        if isinstance(ingredient, str):
+            self.ingredient = ingredient
+        else:
+            self.ingredient = None
+
+    def show_my_drink(self):
+        if self.ingredient:
+            print(f'Газировка и {self.ingredient}')
+        else:
+            print('Обычная газировка')
+
+
+# Тесты
+drink1 = Soda()
+drink2 = Soda('малина')
+drink3 = Soda(5)
+drink1.show_my_drink()
+drink2.show_my_drink()
+drink3.show_my_drink()
+
+
+class TriangleChecker:
+    def __init__(self, dlin=None):
+        if dlin and len(dlin) == 3:
+            self.dlin = dlin
+        else:
+            self.dlin = None
+    def is_triangle(self):
+        if self.dlin:
+            print(f'Ура, можно построить треугольник!')
+        else:
+            print('Жаль, но из этого треугольник не сделать')
+
+
+
+Tri0 = TriangleChecker()
+Tri1 = TriangleChecker([1, 1, 2])
+Tri2 = TriangleChecker([2, 3, 2])
+Tri0.is_triangle()
+Tri1.is_triangle()
+Tri2.is_triangle()
+
+
+
+
+############
+
+class KgToPounds:
+
+    def __init__(self, kg):
+        self.__kg = kg
+
+    def to_pounds(self):
+        return self.__kg * 2.205
+
+    def set_kg(self, new_kg):
+        if isinstance(new_kg, (int, float)):
+            self.__kg = new_kg
+        else:
+            raise ValueError('Килограммы задаются только числами')
+
+    def get_kg(self):
+        return self.__kg
+
+    kg = property(get_kg, set_kg)
+
+
+
+class Nikola:
+    def __init__(self, name=None, age=None):
+        self.name = name
+        self.age = age
+    def preo(self):
+        if self.name is not None and self.name != 'Николай':
+            print(f'Я не {self.name}, а Николай')
+        else:
+            print('Привет, Николай')
+
+name = Nikola()
+name1 = Nikola('Николай', 25)
+name3 = Nikola('Макс', 24)
+name.preo()
+name1.preo()
+name3.preo()
+
+
+
+class RealString:
+
+    def __init__(self, an=None, rus=None):
+        self.an = an
+        self.rus = rus
+    def mat(self):
+        if self.an and self.rus is not None:
+
+            if self.an > self.rus:
+                print(f'{self.an}')
+            else:
+                print(f'{self.rus}')
+
+rew = RealString()
+rew1 = RealString('Apple', 'Яблоко')
+rew2 = RealString('Zoo', 'Азбука')
+rew.mat()
+rew1.mat()
+rew2.mat()
+
+
+
+
+class Vehicle:
+
+    def __init__(self, name, max_speed, mileage):
+        self.name = name
+        self.max_speed = max_speed
+        self.mileage = mileage
+
+class Bus(Vehicle):
+    def Busi(self, color='white'):
+        self.color = color
+        print(
+            f'Цвет: {self.color}, Название автомобиля: {self.name}, Скорость: {self.max_speed}, Пробег: {self.mileage}')
+
+class Car(Vehicle):
+    def Cari(self, color='white'):
+        self.color = color
+        print(
+            f'Цвет: {self.color}, Название автомобиля: {self.name}, Скорость: {self.max_speed}, Пробег: {self.mileage}')
+
+
+School_bus = Bus("School Volvo", 180, 12)
+Cari = Car("Audi", 280, 52)
+School_bus.Busi()
+Cari.Cari()
