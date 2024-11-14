@@ -424,3 +424,610 @@ School_bus = Bus("School Volvo", 180, 12)
 Cari = Car("Audi", 280, 52)
 School_bus.Busi()
 Cari.Cari()
+
+
+
+class Vehicle:
+    def __init__(self, name, mileage, capacity):
+        self.name = name
+        self.mileage = mileage
+        self.capacity = capacity
+
+    def fare(self):
+        return self.capacity * 100
+
+class Bus(Vehicle):
+    def fare(self):
+        return self.capacity * 100 + (self.capacity * 100)//10
+
+School_bus = Bus("School Volvo", 12, 50)
+print("Total Bus fare is:", School_bus.fare())
+
+
+
+
+class Vehicle:
+    def __init__(self, name, mileage, capacity):
+        self.name = name
+        self.mileage = mileage
+        self.capacity = capacity
+
+class Bus(Vehicle):
+    pass
+
+School_bus = Bus("School Volvo", 12, 50)
+print(isinstance(School_bus, Vehicle))
+
+
+
+class Circle:
+    def __init__(self, r=None):
+        self.r = r
+    def s_p(self):
+        if self.r is not None:
+            S = 3.14 * self.r ** 2
+            p = 2*3.14*self.r
+            print(S, p, self.r)
+
+sp = Circle(5)
+sp.s_p()
+
+
+class Person:
+
+    def __init__(self, name1=None, country=None, hb=None):
+        self.name1 = name1
+        self.country = country
+        self.hb = hb
+
+    def search(self):
+        if self.name1 and self.country and self.hb is not None:
+            age = 2024 - self.hb
+            return  f'{self.name1} из {self.country} родился в {self.hb} году и сейчас ему {age}'
+
+rec = Person("Паша", "Уссурийск", 1999)
+print(rec.search())
+
+
+
+def qua(x, y):
+    if x > y:
+        return x
+    else:
+        return y
+
+sea = qua(2, 5)
+print(sea)
+
+
+
+class Forma:
+
+    def __init__(self, rad, a, b):
+        self.rad = rad
+        self.a = a
+        self.b = b
+
+class Krug(Forma):
+    def s_p_krug(self):
+        S = 3.14 * self.rad ** 2
+        p = 2 * 3.14 * self.rad
+        return f'Площадь круга {S} и его периметр {p}'
+
+class Kvad(Forma):
+    def s_p_kvad(self):
+        S = self.a * self.b
+        p = self.a * 2 + self.b * 2
+        return f'Площадь квадрата {S} и его периметр {p}'
+
+
+sea = Krug(5, 7, 8)
+sea1 = Kvad(6, 6, 6)
+print(sea.s_p_krug())
+print(sea1.s_p_kvad())
+
+class Node:
+    # Initialize the Node object with a value, and set the left and right child pointers to None
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+    # Define a custom __str__ method to convert the node's value to a string
+    def __str__(self):
+        return str(self.value)
+
+# Define a class called BinarySearchTree to represent a binary search tree
+class BinarySearchTree:
+    # Initialize the BST with an empty root node
+    def __init__(self):
+        self.root = None
+
+    # Insert a value into the BST
+    def insert(self, value):
+        # If the root is None, create a new node with the given value as the root
+        if self.root is None:
+            self.root = Node(value)
+        else:
+            self._insert_recursive(self.root, value)
+
+    # Helper method to recursively insert a value into the BST
+    def _insert_recursive(self, node, value):
+        if value < node.value:
+            if node.left is None:
+                node.left = Node(value)
+            else:
+                self._insert_recursive(node.left, value)
+        elif value > node.value:
+            if node.right is None:
+                node.right = Node(value)
+            else:
+                self._insert_recursive(node.right, value)
+
+    # Search for a value in the BST
+    def search(self, value):
+        return self._search_recursive(self.root, value)
+
+    # Helper method to recursively search for a value in the BST and return the node if found
+    def _search_recursive(self, node, value):
+        if node is None or node.value == value:
+            return node
+        if value < node.value:
+            return self._search_recursive(node.left, value)
+        else:
+            return self._search_recursive(node.right, value)
+
+# Example usage
+# Create an instance of BinarySearchTree
+bst = BinarySearchTree()
+
+# Insert values into the BST
+bst.insert(5)
+bst.insert(3)
+bst.insert(7)
+bst.insert(2)
+bst.insert(4)
+bst.insert(6)
+bst.insert(8)
+
+# Search for elements in the BST and print the results
+print("Searching for elements:")
+print(bst.search(5))  # Found, returns the node (4)
+print(bst.search(9))  # Not found, returns None
+
+
+def revert_int_option_1(num):
+    print('Option 1: Use reversed() method')
+    return int(''.join(list(reversed(str(num)))))
+
+
+def revert_int_option_2(num):
+    print('Option 2: Use slices')
+    return int(str(num)[::-1])
+
+
+print(revert_int_option_1(12345))
+print(revert_int_option_2(12345))
+
+x = 123456
+print(int(str(x)[::-1]))
+
+
+xx = 371
+digits = list(str(xx))  # Преобразуем число в строку и разбиваем на символы
+digits = [int(digit) for digit in digits]
+y = []
+z = 0
+for i in range(len(digits)):
+    z+=digits[i]**(len(digits))
+print(z)
+
+
+num = [1, 2, 3, 333, 5, 6, 9, 77, 8, 5, 10, 73, 83, 113]
+nums = []
+for i in num:
+    for j in range(1, len(num)):
+        if i % j == 0:
+            nums.append(i)
+
+
+ui = 123456789
+c = list(str(ui))
+ran = ([int(r) for r in c])
+print(ran)
+
+'''
+from math import *
+class Calc:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def all(self):
+        if self.b == 0:
+            return 'NO bro'
+        else:
+            return f'{self.a}/{self.b}={self.a / self.b}'
+    def all_(self):
+        return f'{self.a}*{self.b}={self.a * self.b}'
+
+ravn = Calc(int(input()), int(input()))
+ravn.all()
+ravn.all_()
+print(ravn.all(), ravn.all_())
+
+
+fun = (lambda x: x*2)
+g = fun(12)
+print(f'lambda func = {g}')
+'''
+
+class Iter:
+    def __init__(self, first, second):
+        self.first = first
+        self.second = second
+        self.third = first
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.third < self.second:
+            val = self.third
+            self.third += 1
+            return val
+        else:
+            raise StopIteration
+
+for nub in Iter(1, 20):
+    print(nub)
+
+
+'''
+class Ai:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def tet(self):
+        print(f'Молодец {self.name}')
+
+    def bot(self):
+        print(f'Hello {self.name}, I`m Bot. Выбери что хочешь узнать. 1-свой возраст')
+        choice = int(input())
+        if choice == 1:
+            print(f'Тебе сейчас - {self.age}')
+
+name = input("Введите имя: ")
+age = int(input("Введите возраст: "))
+sea = Ai(name, age)
+
+sea.tet()
+sea.bot()
+'''
+
+
+
+def deco(func):
+    def qua(*args, **kwargs):
+        # Используем аргументы, переданные в sun
+        x, y, z = args
+        # Вызываем sun
+        func(x, y, z)
+        # Увеличиваем значения
+        x += 20
+        y += 20
+        z += 20
+        # Возвращаем обновленные значения
+        return x, y, z
+    return qua
+
+@deco
+def sun(x, y, z):
+    print(f"больше на 20: x- {x}, y-{y}, z-{z}")
+
+
+sea = sun(10, 20, 30)
+print(sea)
+
+
+
+class Car:
+    def __init__(self, marka, podmarka):
+        self.marka = marka
+        self.podmarka = podmarka
+    def start(self):
+        Japan = ['Honda', 'Toyota']
+        if self.marka in Japan:
+            return 'From Japan'
+        else:
+            return 'huina'
+    def stop(self):
+        if self.podmarka == 'Civic':
+            return 'Wooooow'
+        else:
+            return 'oh'
+
+sea = Car('Honda', 'Civic')
+print(f'Машина {sea.start()} начала движение')
+print(f'Машина {sea.stop()} закончила движение')
+
+
+def decorator_1(func):
+
+    def pod(*args, **kwargs):
+
+        x, y = args
+        func(x, y)
+        if x > 10 or y > 11:
+
+            return f'Ты серьезно ввел {x}, ну даешь!'
+        else:
+            return 'lox'
+    return pod
+
+@decorator_1
+def gua (x, y):
+    if x == 10 or y == 11:
+        print('you are the best')
+    else:
+        print('lox2')
+sea = gua(10 , 10)
+print(sea)
+
+
+
+class Animal:
+    def speak(self):
+        print("Звук животного")
+
+class Dog(Animal):
+    def speak(self):
+        print("Гав!")
+
+class Cat(Animal):
+    def speak(self):
+        print("Мяу!")
+
+def make_sound(animal):
+    animal.speak()  # Полиморфизм: метод speak вызывается для разных типов животных
+
+my_dog = Dog()
+my_cat = Cat()
+make_sound(my_dog)  # Вывод: Гав!
+make_sound(my_cat)  # Вывод: Мяу!
+
+
+
+def fibonacci(length):
+    lst = [0, 1]
+    for item, index in enumerate(range(2, length)):
+        lst.append(lst[index-2] + lst[index-1])
+    return lst
+
+print(fibonacci(14))
+
+'''
+class Shop:
+
+    def __init__(self, SSD, CPU):
+        self.SSD = SSD
+
+        self.CPU = CPU
+        self.shopping = []
+
+    def addshop(self):
+
+        val = input()
+        if val =='add':
+            print('что вы хотите добавить?')
+            comp = input()
+            if comp == self.SSD:
+                self.shopping.append(self.SSD)
+                print('добавлено', self.shopping)
+            if comp == self.CPU:
+                self.shopping.append(self.CPU)
+                print('добавлено', self.shopping)
+            else:
+                print('такой товар отсутствует')
+        elif val == 'del':
+            print('что вы хотите удалить?')
+            comp = input()
+            if comp == self.SSD:
+                self.shopping.remove(self.SSD)
+                print('удалено', self.shopping)
+            if comp == self.CPU:
+                self.shopping.remove(self.CPU)
+                print('удалено', self.shopping)
+            else:
+                print('такой товар отсутствует')
+
+
+sea = Shop('AMD', 'i7-12400')
+
+sea.addshop()
+'''
+
+
+def decator(func):
+
+    def qua(*args, **kwargs):
+        result = func(*args, **kwargs)
+
+        return result.upper()
+    return qua
+@decator
+def sea(text):
+    print('text up')
+    return text
+tea = sea(('okey, let`s go'))
+print(tea)
+
+
+
+
+
+
+def revert(x):
+    pust = []
+    y = list(str(x))
+    for i in y[::-1]:
+        pust.append(i)
+    print(*pust)
+
+print(revert((123456789)))
+
+
+
+def prostoe(x):
+
+    for i in range(2, x):
+        if x % i ==0:
+            return False
+    return True
+
+
+for p in [1,3,5,7,12,15,16,19,20,21,32]:
+    print(f"{p}: {prostoe(p)}")
+
+
+def fact(x):
+    p = 1
+    for i in range(1, x+1):
+        p*=i
+    return p
+
+print(fact(5))
+
+
+def palin(x):
+    z = int(str(x)[::-1])
+    y = int(str(x))
+    if z == y:
+        return 'palinom'
+    else:
+        return 'no'
+
+print(palin(1212))
+
+def mnog(x):
+    sp = []
+    pr = []
+    for i in range(1, x+1):
+        if x%i == 0:
+            sp.append(i)
+            for j in range(1, sp[-1]):
+                for o in range(1, sp[-1]):
+                    if j*o==x:
+                        pr.append(j)
+                        pr.append(o)
+
+print(mnog(12))
+
+import asyncio
+
+
+async def f1(x):
+    if x > 1:
+        return f'{x} > 1'
+    else:
+        return 'lox'
+    await asyncio.sleep(3)
+    return 'f1 the end'
+
+
+async def f2(y):
+    if y < 1:
+        return f'{y} < 1'
+    else:
+        return 'lox'
+    await asyncio.sleep(3)
+    return 'f2 the end'
+
+
+async def qua():
+    task1 = asyncio.create_task(f1(2))
+    task2 = asyncio.create_task(f2(4))
+
+    result1 = await task1  # Ожидаем завершения задачи 1
+    result2 = await task2  # Ожидаем завершения задачи 2
+
+    return result1, result2
+
+
+async def main():
+    result = await qua()
+    print(result)
+
+
+asyncio.run(main())
+
+
+
+def rec(func):
+    def su(*args, **kwargs):
+        res = func(*args, **kwargs)
+        x = int(str(res)[::-1])
+        return x
+    return su
+@rec
+def spis(y):
+    print(f'{y} reversed -')
+    return y
+print(spis(1234567890))
+
+
+
+import asyncio
+
+
+# имитация  асинхронного соединения с некой периферией
+async def get_conn(host, port):
+    class Conn:
+        async def put_data(self):
+            print('Отправка данных...')
+            await asyncio.sleep(2)
+            print('Данные отправлены.')
+
+        async def get_data(self):
+            print('Получение данных...')
+            await asyncio.sleep(2)
+            print('Данные получены.')
+
+        async def close(self):
+            print('Завершение соединения...')
+            await asyncio.sleep(2)
+            print('Соединение завершено.')
+
+    print('Устанавливаем соединение...')
+    await asyncio.sleep(2)
+    print('Соединение установлено.')
+    return Conn()
+
+
+class Connection:
+    # этот конструктор будет выполнен в заголовке with
+    def __init__(self, host, port):
+        self.host = host
+        self.port = port
+
+    # этот метод будет неявно выполнен при входе в with
+    async def __aenter__(self):
+        self.conn = await get_conn(self.host, self.port)
+        return self.conn
+
+    # этот метод будет неявно выполнен при выходе из with
+    async def __aexit__(self, exc_type, exc, tb):
+        await self.conn.close()
+
+
+async def main():
+    async with Connection('localhost', 9001) as conn:
+        send_task = asyncio.create_task(conn.put_data())
+        receive_task = asyncio.create_task(conn.get_data())
+
+        # операции отправки и получения данных выполняем конкурентно
+        await send_task
+        await receive_task
+
+
+asyncio.run(main())
